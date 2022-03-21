@@ -1,6 +1,6 @@
 <?php
 
-namespace Valda\Notifications;
+namespace Skafos\Notifications;
 
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;

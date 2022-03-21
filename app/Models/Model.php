@@ -1,12 +1,12 @@
 <?php
 
-namespace Valda\Models;
+namespace Skafos\Models;
 
 use Illuminate\Support\Facades\Schema;
-use Valda\Traits\HasAssets;
-use Valda\Traits\HasColumns;
-use Valda\Traits\MasksAttributes;
-use Valda\Traits\SilencesModelEvents;
+use Skafos\Traits\HasAssets;
+use Skafos\Traits\HasColumns;
+use Skafos\Traits\MasksAttributes;
+use Skafos\Traits\SilencesModelEvents;
 
 class Model extends EncryptedModel
 {

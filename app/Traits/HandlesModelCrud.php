@@ -1,6 +1,6 @@
 <?php
 
-namespace Valda\Traits;
+namespace Skafos\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;

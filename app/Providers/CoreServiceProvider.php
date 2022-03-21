@@ -1,9 +1,9 @@
 <?php
 
-namespace Valda\Providers;
+namespace Skafos\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Valda\Commands\ValdaScoutImportCommand;
+use Skafos\Commands\SkafosScoutImportCommand;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -15,9 +15,9 @@ class CoreServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->commands([
-            ValdaScoutImportCommand::class,
+            SkafosScoutImportCommand::class,
         ]);
         
-        $this->loadViewsFrom(__DIR__ . '/../../views', 'valda');
+        $this->loadViewsFrom(__DIR__ . '/../../views', 'skafos');
     }
 }

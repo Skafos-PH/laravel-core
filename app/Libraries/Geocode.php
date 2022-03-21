@@ -1,6 +1,6 @@
 <?php
 
-namespace Valda\Libraries;
+namespace Skafos\Libraries;
 
 use GuzzleHttp\Client;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Valda\Database;
+namespace Skafos\Database;
 
 use Carbon\Carbon;
 use Illuminate\Database\Seeder as BaseSeeder;

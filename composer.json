@@ -30,13 +30,13 @@
             "app/Helpers/helpers.php"
         ],
         "psr-4": {
-            "Valda\\": "app/"
+            "Skafos\\": "app/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Valda\\Providers\\CoreServiceProvider"
+                "Skafos\\Providers\\CoreServiceProvider"
             ]
         }
     },

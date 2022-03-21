@@ -1,12 +1,12 @@
 <?php
 
-namespace Valda\Traits;
+namespace Skafos\Traits;
 
 use Carbon\Carbon;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Valda\Notifications\ActivateAccount;
+use Skafos\Notifications\ActivateAccount;
 
 trait Activatable
 {

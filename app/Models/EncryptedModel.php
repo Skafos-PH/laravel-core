@@ -1,9 +1,9 @@
 <?php
 
-namespace Valda\Models;
+namespace Skafos\Models;
 
 use Illuminate\Database\Eloquent\Model as BaseModel;
-use Valda\Traits\EncryptsAttributes;
+use Skafos\Traits\EncryptsAttributes;
 
 class EncryptedModel extends BaseModel
 {

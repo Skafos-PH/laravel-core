@@ -1,6 +1,6 @@
 <?php
 
-namespace Valda\Traits;
+namespace Skafos\Traits;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;

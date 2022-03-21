@@ -1,20 +1,19 @@
 <?php
 
-namespace Valda\Commands;
+namespace Skafos\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Laravel\Scout\Searchable;
-use ScoutElastic\Searchable as ElasticSearchable;
 
-class ValdaScoutImportCommand extends Command
+class SkafosScoutImportCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'valda-scout:import {--fresh : Recreate search indeces before importing.}
+    protected $signature = 'skafos-scout:import {--fresh : Recreate search indeces before importing.}
                 {--create : Create search indices before importing.}  
                 {--map : Update type mapping of indeces (For Elasticsearch only).}
                 {--models= : The path to the models}';
@@ -64,7 +63,7 @@ class ValdaScoutImportCommand extends Command
     protected function createIndices($models)
     {
         foreach ($models as $model) {
-            $baseModel = array_last(explode('\\', $model));
+            $baseModel = Arr::last(explode('\\', $model));
             $snakeModel = Str::snake($baseModel);
 
             switch (config('scout.driver')) {
@@ -172,7 +171,7 @@ class ValdaScoutImportCommand extends Command
     protected function recreateIndices($models)
     {
         foreach ($models as $model) {
-            $baseModel = array_last(explode('\\', $model));
+            $baseModel = Arr::last(explode('\\', $model));
             $snakeModel = Str::snake($baseModel);
 
             switch (config('scout.driver')) {

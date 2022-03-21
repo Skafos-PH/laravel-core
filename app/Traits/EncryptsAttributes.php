@@ -1,6 +1,6 @@
 <?php
 
-namespace Valda\Traits;
+namespace Skafos\Traits;
 
 trait EncryptsAttributes
 {
