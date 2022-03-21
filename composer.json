@@ -1,0 +1,51 @@
+{
+    "name": "valda/laravel-core",
+    "description": "Core Laravel package for Valda services",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jefferson Asis",
+            "email": "jeffersonasis@valda.ph"
+        },
+        {
+            "name": "Jericho Logronio",
+            "email": "jerichologronio@valda.ph"
+        },
+        {
+            "name": "John Ryan Camatog",
+            "email": "johnryancamatog@valda.ph"
+        },
+        {
+            "name": "Jonan Pineda",
+            "email": "jonanpineda@valda.ph"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "babenkoivan/scout-elasticsearch-driver": "^4.3",
+        "doctrine/dbal": "^2.8",
+        "guzzlehttp/guzzle": "^6.3 || ^7.0",
+        "intervention/image": "^2.4",
+        "laravel/scout": "^8.0",
+        "nesbot/carbon": "^1.24.1 || ^2.31"
+    },
+    "autoload": {
+        "files": [
+            "app/Helpers/helpers.php"
+        ],
+        "psr-4": {
+            "Valda\\": "app/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Valda\\Providers\\CoreServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
