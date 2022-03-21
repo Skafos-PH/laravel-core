@@ -1,23 +1,19 @@
 {
-    "name": "valda/laravel-core",
-    "description": "Core Laravel package for Valda services",
+    "name": "skafos/laravel-core",
+    "description": "Core Laravel package for Skafos services",
     "license": "MIT",
     "authors": [
         {
             "name": "Jefferson Asis",
-            "email": "jeffersonasis@valda.ph"
-        },
-        {
-            "name": "Jericho Logronio",
-            "email": "jerichologronio@valda.ph"
+            "email": "asis.jefferson.prog@gmail.com"
         },
         {
             "name": "John Ryan Camatog",
-            "email": "johnryancamatog@valda.ph"
+            "email": "john.ryan.camatog@gmail.com"
         },
         {
             "name": "Jonan Pineda",
-            "email": "jonanpineda@valda.ph"
+            "email": "jonan.pineda@gmail.com"
         }
     ],
     "require": {
