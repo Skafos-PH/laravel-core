@@ -3,7 +3,6 @@
 namespace Skafos\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Skafos\Commands\SkafosScoutImportCommand;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -14,10 +13,6 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->commands([
-            SkafosScoutImportCommand::class,
-        ]);
-        
         $this->loadViewsFrom(__DIR__ . '/../../views', 'skafos');
     }
 }

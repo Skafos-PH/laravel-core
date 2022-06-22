@@ -4,11 +4,9 @@ namespace Skafos\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
-use Laravel\Scout\Searchable;
-use ScoutElastic\Searchable as ElasticSearchable;
 
 trait HandlesModelCrud
 {
@@ -152,31 +150,9 @@ trait HandlesModelCrud
      */
     protected function getBuilder(Request $request, &$model)
     {
-        if ($this->isSearching($request)) {
-            $model = $this->getSearchableBuilder($request);
-        } else {
-            $model = $model instanceof Builder ? $model : $model->query();
-        }
+        $model = $model instanceof Builder ? $model : $model->query;
 
         return $this;
-    }
-
-    /**
-     * Get the searcahble builder of the resource.
-     *
-     * @param  Request  $request
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    protected function getSearchableBuilder(Request $request)
-    {
-        $model = get_class($this->model)::search($request->query('q'));
-        $params = Arr::only($request->all(), $this->getSearchableAttributes());
-
-        foreach ($params as $key => $value) {
-            $model->where($key, $value);
-        }
-
-        return $this->model->newQuery()->whereIn('id', $model->take(10000)->get()->pluck('id')->toArray());
     }
 
     /**
@@ -209,7 +185,7 @@ trait HandlesModelCrud
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  mixed  $model
-     * @return array
+     * @return $this
      */
     protected function applyBasicQueries(Request $request, &$model)
     {
@@ -224,7 +200,7 @@ trait HandlesModelCrud
      * @param  \Illuminate\Http\Request  $request
      * @param  mixed  $model
      * @param  array  $except
-     * @return array
+     * @return $this
      */
     protected function applyWhere(Request $request, &$model)
     {
@@ -234,9 +210,7 @@ trait HandlesModelCrud
         $tableName = $this->model->getTable();
         $strict = filter_var($request->query('strict', false), FILTER_VALIDATE_BOOLEAN);
 
-        $attributes = $this->isSearching($request)
-            ? array_values(array_diff($this->getModelAttributes(), $this->getSearchableAttributes()))
-            : $this->getModelAttributes();
+        $attributes = $this->getModelAttributes();
 
         $params = Arr::only($request->all(), $attributes);
 
@@ -294,7 +268,7 @@ trait HandlesModelCrud
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  mixed  $model
-     * @return array
+     * @return $this
      */
     protected function applyNot(Request $request, &$model)
     {
@@ -429,22 +403,6 @@ trait HandlesModelCrud
     }
 
     /**
-     * Check if the request is searching for a resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return boolean
-     */
-    protected function isSearching(Request $request)
-    {
-        $modelTraits = class_uses(get_class($this->model));
-
-        $isSearchable = in_array(Searchable::class, $modelTraits)
-            || in_array(ElasticSearchable::class, $modelTraits);
-
-        return $request->filled('q') && $isSearchable;
-    }
-
-    /**
      * Get all of the model's attributes.
      *
      * @return array
@@ -452,15 +410,5 @@ trait HandlesModelCrud
     protected function getModelAttributes()
     {
         return Arr::except(Schema::getColumnListing($this->model->getTable()), $this->excludeFromQuery);
-    }
-
-    /**
-     * Get all of the model's searchable attributes.
-     *
-     * @return array
-     */
-    protected function getSearchableAttributes()
-    {
-        return Arr::except(array_keys($this->model->getMapping()['properties']), $this->excludeFromQuery);
     }
 }
