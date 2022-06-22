@@ -130,7 +130,7 @@ trait HandlesModelCrud
      */
     protected function queryModel(Request $request, $model = null)
     {
-        $model = $model ? : $this->model;
+        $model = $model ?: $this->model;
 
         $results = $this->getBuilder($request, $model)
             ->applyScopes($request, $model)
@@ -150,7 +150,7 @@ trait HandlesModelCrud
      */
     protected function getBuilder(Request $request, &$model)
     {
-        $model = $model instanceof Builder ? $model : $model->query;
+        $model = $model instanceof Builder ? $model : $model->query();
 
         return $this;
     }
@@ -352,11 +352,9 @@ trait HandlesModelCrud
         switch ($return) {
             case 'count':
                 return $model->count();
-                break;
 
             case 'first':
                 return $model->first();
-                break;
 
             default:
                 if ($unique) {
